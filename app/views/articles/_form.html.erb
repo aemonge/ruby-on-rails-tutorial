@@ -1,0 +1,46 @@
+<%= form_with model: @article do |form| %>
+  <p><%= form.label :title %></p>
+  <p><%= form.text_field :title %> </p>
+
+  <p><%= form.label :body %> </p>
+  <p><%= form.text_area :body %> </p>
+  <%# textareas are problematic with default values %>
+
+  <p><%= form.label :commentsEnabled %> </p>
+  <p><%= form.check_box :commentsEnabled %></p>
+
+  <%= form.submit 'Save it!' %>
+<% end %>
+
+<% if @article.errors.present? %>
+
+  <hr />
+
+  <h2> Errors: </h2>
+  <dl><% @article.errors.attribute_names.each do |attr_name|  %>
+    <dt> <%= attr_name %> </dt>
+    <dd>
+      <ul><% @article.errors.full_messages_for(attr_name).each do |msg|  %>
+        <li><%= msg %></li>
+      <% end %></ul>
+    </dd>
+  <% end %> </dl>
+<% end %>
+
+<% if false %>
+    <dt> Body </dt>
+    <dd>
+      <ul><% @article.errors.full_messages_for(:body).each do |msg|  %>
+        <li><%= msg %></li>
+      <% end %></ul>
+    </dd>
+
+    <dt> Enable Comments </dt>
+    <dd>
+      <ul><% @article.errors.full_messages_for(:cmt).each do |msg|  %>
+        <li><%= msg %></li>
+      <% end %></ul>
+    </dd>
+<% end %>
+
+<a href="<%= articles_path %>">Cancel</a>

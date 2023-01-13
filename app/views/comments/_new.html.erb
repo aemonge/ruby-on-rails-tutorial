@@ -1,0 +1,13 @@
+<%= form_with model: [ @article, @article.comments.build ] do |cform| %>
+  <p>
+    <%= cform.label :body %><br>
+    <%= cform.text_area :body %>
+  </p>
+  <p>
+    <%= cform.label :commenter %><br>
+    <%= cform.text_field :commenter %>
+  </p>
+  <p>
+    <%= cform.submit %>
+  </p>
+<% end %>

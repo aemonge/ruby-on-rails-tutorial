@@ -1,0 +1,25 @@
+<h1>Hello <%= @name %> <%= link_to '➕', new_article_path %></h1>
+<hr />
+<ul style="max-width: 70vw;">
+  <% @articles.each do |a| %>
+  <% test_str = (a.commentsEnabled ? a.title : a.title + ' (comments disabled)') %>
+  <dl style="margin-bottom: 10px">
+    <dt style="margin-bottom: 10px">
+      <a href="<%= article_path(a) %>">
+        <%= test_str %>
+      </a>
+      <span style="float:right">
+        <%= link_to '👀', a %>
+        <%= link_to '✏️', edit_article_path(a) %>
+        <%= link_to '⚔️', article_path(a), data: {
+          turbo_method: :delete, # though my method is :destroy
+          turbo_confirm: "😕 shu sure?"
+        } %>
+      </span>
+    </dt>
+    <dd>
+      <%= a.body %>
+    </dd>
+  </dl>
+  <% end %>
+</ul>

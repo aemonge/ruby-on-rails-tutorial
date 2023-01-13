@@ -1,0 +1,15 @@
+
+<h2>Add comments</h2>
+<%= render 'comments/new' %>
+
+<hr />
+
+<% if @article.comments.count > 0 %>
+  <ul><% @article.comments.each do |comment|  %>
+    <li>
+      <p><%= comment.body %></p>
+
+      <em><%= comment.commenter %></em>
+    </li>
+  <% end %></ul>
+<% end %></ul>

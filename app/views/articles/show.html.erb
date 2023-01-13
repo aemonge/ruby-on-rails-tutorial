@@ -1,0 +1,8 @@
+<h1><%= @article.title %> <%= link_to "<~", articles_path %> </h1>
+<pre><%=@article.body %></pre>
+
+<% if @article.commentsEnabled %>
+  <%= render 'comments/comments' %>
+<% end %>
+
+<a href="<%= articles_path %>">Back</a>
